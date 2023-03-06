@@ -35,7 +35,8 @@ export default function Home() {
               membership
             </p>
             <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0">
-              <input className=" outline-none h-10 sm:h-12 w-[300px]"></input>
+              <input placeholder="Email address"
+              type="email" className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"></input>
               <button className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
                 {" "}
                 Get Started &#62;
