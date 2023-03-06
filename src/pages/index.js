@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import TV from "../assests/tv.png"
+import Lewis from "../assests/lewis.png"
+import Kids from "../assests/kids.png"
+import Mobile from "../assests/mobile.jpg"
 
 export default function Home() {
   return (
@@ -44,13 +47,53 @@ export default function Home() {
 
       {/* Description */}
 
-      <div className=" sm:flex sm:items-center  sm:justify-center border-t-[10px] border-gray-700 bg-black text-white text-center sm:text-start px-5 sm:px-12 pt-10 sm:pt-5" >
+      <div className=" md:flex md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5" >
         <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col">
-        <h1 className= "text-smallh1   sm:text-mediumh1 md:text-largeh1 font-[600]">Enjoy Netflix on your TV.</h1>
-        <p className=" text-smalldescription sm:text-mediumdescription  md:text-largedescription"> Watch titles on Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+        <h1 className= "text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">Enjoy Netflix on your TV.</h1>
+        <p className=" text-smalldescription sm:text-mediumdescription  lg:text-largedescription"> Watch titles on Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
      </div>
      <div>
       <Image src={TV}  width={640} height={480} alt='tv' />
+      
+
+     </div>
+      </div>
+      
+
+
+
+      <div className=" md:flex md:flex-row-reverse md:items-center  md:justify-center border-t-[10px] border-white border-opacity-20  bg-black text-white text-center md:text-start  px-5 sm:px-12 py-14  sm:pt-5" >
+        <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:ml-5">
+        <h1 className= "text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">Watch Netflix everywhere</h1>
+        <p className=" text-smalldescription sm:text-mediumdescription  lg:text-largedescription"> Stream unlimited movies and TV shows on your phone, tablet, laptop and TV without paying more</p>
+     </div>
+     <div>
+      <Image src={Lewis}  width={640} height={480} alt='tv' />
+      
+
+     </div>
+      </div>
+
+      <div className=" md:flex md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5" >
+        <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:mt-10">
+        <h1 className= "text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">Create profile for kids.</h1>
+        <p className=" text-smalldescription sm:text-mediumdescription  lg:text-largedescription">Send kids on adventures with their favourite characters in a space made just for them free with your membership </p>
+     </div>
+     <div>
+      <Image src={Kids}  width={640} height={480} alt='tv' />
+      
+
+     </div>
+      </div>
+
+      
+      <div className=" md:flex md:flex-row-reverse md:items-center  md:justify-center border-t-[10px] border-white border-opacity-20  bg-black text-white text-center md:text-start  px-5 sm:px-12 py-14  sm:pt-5" >
+        <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:ml-5">
+        <h1 className= "text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">Download your shows to watch them offline</h1>
+        <p className=" text-smalldescription sm:text-mediumdescription  lg:text-largedescription"> Only available on ad-free plans</p>
+     </div>
+     <div>
+      <Image src={Mobile}  width={640} height={480} alt='tv' />
       
 
      </div>
