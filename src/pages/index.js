@@ -6,8 +6,14 @@ import Lewis from "../assests/lewis.png";
 import Kids from "../assests/kids.png";
 import Mobile from "../assests/mobile.jpg";
 import { PlusIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+import { questions } from "../../questions";
+import FAQs from "@/components/FAQs";
+import Footer from "@/components/Footer";
 
 export default function Home() {
+
+
   return (
     <>
       <div className="  from-black bg-[url('/bgimage.png')] h-[70vh] sm:h-[100vh] w-full  bg-cover bg-center bg-no-repeat  ">
@@ -52,7 +58,7 @@ export default function Home() {
 
       {/* Description */}
 
-      <div className=" md:flex md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
+      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
         <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col">
           <h1 className="text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">
             Enjoy Netflix on your TV.
@@ -68,7 +74,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" md:flex md:flex-row-reverse md:items-center  md:justify-center border-t-[10px] border-white border-opacity-20  bg-black text-white text-center md:text-start  px-5 sm:px-12 py-14  sm:pt-5">
+      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
         <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:ml-5">
           <h1 className="text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">
             Watch Netflix everywhere
@@ -84,7 +90,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" md:flex md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
+      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
         <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:mt-10">
           <h1 className="text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">
             Create profile for kids.
@@ -99,7 +105,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" md:flex md:flex-row-reverse md:items-center  md:justify-center border-t-[10px] border-white border-opacity-20  bg-black text-white text-center md:text-start  px-5 sm:px-12 py-14  sm:pt-5">
+      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
         <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:ml-5">
           <h1 className="text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">
             Download your shows to watch them offline
@@ -115,28 +121,34 @@ export default function Home() {
       </div>
 
       {/*  FREQUENTLY ASEKD QUESTIONS*/}
-      <div className="bg-black text-white border-t-[10px] border-opacity-20 border-white p-4 pt-8">
+      <div className="bg-black text-white border-t-[10px] border-opacity-20 border-white p-4 pt-8 flex flex-col items-center ">
         <h1 className="text-smallh1 font-[700] md:text-mediumh1 lg:text-largeh1 text-center">
           Frequently Asked Questions{" "}
         </h1>
-        <div className="container question  mt-8">
-          <div className="h-[50px] flex items-center justify-between sm:h-[60px] bg-white bg-opacity-20  w-3/4 lg:w-1/2 m-auto p-3">
-            <h1 className="text-[18px] sm:text-mediumdescription lg:text-largedescription ">
-              What is Netflix?
-            </h1>
-            <PlusIcon className="w-8" />
-          </div>
-          <div className=" bg-white bg-opacity-20  w-3/4 lg:w-1/2 m-auto p-3 mt-[2px]">
-            <p className="text-[18px] sm:text-mediumdescription lg:text-largedescription ">
-            Netflix is a streaming service that offers a wide variety of
-            award-winning TV shows, movies, anime, documentaries and more on
-            thousands of internet-connected devices.  You can watch as much as
-            you want, whenever you want – all for one low monthly price. There's
-            always something new to discover, and new TV shows and movies are
-            added every week!</p>
-          </div>
-        </div>
+        <div className="space-y-2 sm:w-3/4 lg:w-1/2 m-auto mt-8">
+       {questions.map((question) => <FAQs key={question.id} item={question}/>)}
       </div>
+      </div>
+
+{/* READY TO WATCH NETFLIX? */}
+<div className="bg-black text-white flex flex-col items-center space-y-4 py-12">
+  <h1 className="text-smalldescription text-center">Ready to watch Netflix? Enter your email to create or restart your membership. </h1>
+            <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0"> 
+              <input
+                placeholder="Email address"
+                type="email"
+                className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
+              ></input>
+              <button className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
+                {" "}
+                Get Started &#62;
+              </button>
+              </div>
+</div>
+
+{/* FOOTER */}
+<Footer />
+
     </>
   );
 }
