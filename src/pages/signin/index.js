@@ -51,7 +51,7 @@ function signin() {
             
           </div>
          
-            <p className="text-sm mt-4 opacity-40">This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</p>
+            <p className="text-sm mt-4 opacity-40">This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. Learn more.</p>
    </div>
           
         </div>
@@ -106,7 +106,7 @@ function signin() {
             
           </div>
          
-            <p className="text-sm mt-4 opacity-40">This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</p>
+            <p className="text-sm mt-4 opacity-40">This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot. Learn more.</p>
    </div>
         </div>
         

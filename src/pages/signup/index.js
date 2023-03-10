@@ -14,7 +14,7 @@ function Signup() {
         <div className="  w-2/3 md:w-1/3 m-auto mt-10">
             <div className="space-y-2">
             <h1 className="text-[24px] md:text-[34px] font-[700]">Create a password to start your membership </h1>
-            <p>Just a few more steps and your're finished!</p>
+            <p>Just a few more steps and your&apos;re finished!</p>
             <p>We hate paperwork,too.</p>
             </div>
 
