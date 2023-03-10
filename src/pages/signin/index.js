@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "../../assests/Netflixlogo.svg";
 function signin() {
   return (
@@ -8,7 +9,7 @@ function signin() {
 
     <div className="sm:hidden">
       <div className=" p-4 bg-black text-white">
-        <Image src={Logo} alt="Netflix logo" width={150} height={100} />
+ <Link href="/"> <Image src={Logo} alt="Netflix logo" width={150} height={100} /></Link>      
 
         <div className="pt-10">
           <h1 className="text-[26px] font-bold pb-5">Sign in</h1>
@@ -45,7 +46,8 @@ function signin() {
           <div className="my-20">
 
           <div className="flex space-x-2">
-            <p className="opacity-40"> New to Netflix?</p> <p>Sign up now. </p>
+            <p className="opacity-40"> New to Netflix?</p>
+             <Link href="/signup"><p>Sign up now. </p></Link> 
             
           </div>
          
@@ -65,9 +67,9 @@ function signin() {
 
        <div className="p-4 text-white w-full">
 
-        <Image src={Logo} alt="Netflix logo" width={150} height={100} />
+     <Link href="/"> <Image src={Logo} alt="Netflix logo" width={150} height={100} /></Link>  
         
-        <div className=" bg-black sm:w-2/3 md:w-1/3  m-auto mt-10 p-10 ">
+        <div className=" bg-black sm:w-2/3 md:w-2/3 lg:w-1/3  m-auto mt-10  p-5 md:p-10 ">
           
           <form className="space-y-4">
           <h1 className="font-bold text-[24px]"> Sign in </h1>
@@ -100,7 +102,7 @@ function signin() {
           <div className="mt-10">
 
           <div className="flex space-x-2">
-            <p className="opacity-40"> New to Netflix?</p> <p>Sign up now. </p>
+            <p className="opacity-40"> New to Netflix?</p> <Link href="/signin"><p>Sign up now. </p></Link> 
             
           </div>
          
