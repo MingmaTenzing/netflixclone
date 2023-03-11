@@ -10,8 +10,11 @@ import { useState } from "react";
 import { questions } from "../../questions";
 import FAQs from "@/components/FAQs";
 import Footer from "@/components/Footer";
+import { useRouter } from "next/router";
 
 export default function Home() {
+
+  const router = useRouter();
 
 
   return (
@@ -47,7 +50,7 @@ export default function Home() {
                 type="email"
                 className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
               ></input>
-              <button className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
+              <button onClick={() => router.push("/signup")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
                 {" "}
                 Get Started &#62;
               </button>

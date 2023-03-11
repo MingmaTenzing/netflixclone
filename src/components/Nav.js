@@ -1,7 +1,9 @@
 import Image from "next/image"
+import { useRouter } from "next/router";
 import Netflixlogo from "../assests/Netflixlogo.svg"
 
 function Nav() {
+  const router = useRouter();
   return (
     <main className="flex justify-between  lg:p-4">
         <div>
@@ -10,7 +12,7 @@ function Nav() {
         </div>
 
         <div className="">
-            <button className=" py-1 px-2 lg:px-3 rounded-lg bg-NetflixRed  text-white text-sm  sm:text-base md:text-lg"> Sign in</button>
+            <button onClick={() => router.push("/signin")} className=" py-1 px-2 lg:px-3 rounded-lg bg-NetflixRed  text-white text-sm  sm:text-base md:text-lg"> Sign in</button>
 
         </div>
         
