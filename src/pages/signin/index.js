@@ -6,7 +6,7 @@ import { auth } from "@/firebase/init";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-function signin() {
+function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
@@ -144,4 +144,4 @@ function signin() {
     </>
   );
 }
-export default signin;
+export default Signin;

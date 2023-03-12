@@ -4,7 +4,7 @@ import Image from "next/image";
 import { use, useEffect, useState } from "react";
 import Requests from "../../../utilities/Requests";
 
-function browse() {
+function Browse() {
   const [trending, setTrending] = useState();
   const [featured, setFeatured] = useState();
 
@@ -56,4 +56,4 @@ function browse() {
     </main>
   );
 }
-export default browse;
+export default Browse;
