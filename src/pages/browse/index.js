@@ -3,14 +3,11 @@ import Footer from "@/components/Footer";
 import Template from "@/components/Template";
 import {  PlayIcon } from "@heroicons/react/24/solid";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import { Tv } from "@mui/icons-material";
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Requests from "../../../utilities/Requests";
-import Truncate from "react-truncate";
-import TextTruncate from "react-text-truncate";
 
 function Browse() {
   const [trending, setTrending] = useState();
