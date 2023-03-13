@@ -40,7 +40,7 @@ export default {
         url: `/discover/movie?api_key=${API_KEY}&with_genres=878`,
     },
     fetchWestern: {
-        title:'Comedy',
+        title:'Western',
         url: `/discover/movie?api_key=${API_KEY}&with_genres=37`,
     },
 
@@ -50,7 +50,7 @@ export default {
     },
 
     fetchTV: {
-        title:'Comedy',
+        title:'TV',
         url: `/discover/movie?api_key=${API_KEY}&with_genres=10770`,
     },
 
