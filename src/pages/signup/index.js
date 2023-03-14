@@ -5,25 +5,38 @@ import Logo from "../../assests/Netflixlogo.svg";
 import { auth } from "@/firebase/init";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, signinuser } from "../../../slices/userSlice";
+import { useRouter } from "next/router";
+
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
+
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const user = useSelector(selectUser)
+  console.log(user)
 
   function createUser(event) {
     event.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
-        setUser(userCredential.user);
-        
-        
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        dispatch(
+          signinuser({
+            uid: user.uid,
+            email: user.email,
+          })
+        );
 
-      }
-    ).catch((error) => {
-      console.log(error);
-    })
-    }
-  
+        router.push("/browse")
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="">
@@ -60,7 +73,7 @@ function Signup() {
             className="border border-black w-full h-[60px] p-3 text-sm "
           ></input>
           <input
-          minLength={8}
+            minLength={8}
             onChange={(event) => setPassword(event.target.value)}
             type="password"
             placeholder="Password"

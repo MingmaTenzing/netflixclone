@@ -1,5 +1,9 @@
 import '@/styles/globals.css'
 import { Open_Sans } from '@next/font/google'
+import { PersistGate } from 'redux-persist/integration/react'
+import store from '../../store'
+import { Provider } from 'react-redux'
+import {persistStore} from "redux-persist"
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -8,10 +12,17 @@ const openSans = Open_Sans({
   
 })
 
+let persistor = persistStore(store)
+
 export default function App({ Component, pageProps }) {
-  return(<main className={openSans.className}>
+  return(
+  <Provider store={store} >
+    <PersistGate  persistor={persistor}>
+  <main className={openSans.className}>
 <Component {...pageProps}  />
   </main>
+  </PersistGate>
+  </Provider>
 
   ) 
 }
