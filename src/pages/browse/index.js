@@ -6,6 +6,8 @@ import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
+import { useRef } from 'react'
+import { useIntersectionObserver } from "usehooks-ts";
 import { useEffect, useState } from "react";
 import Requests from "../../../utilities/Requests";
 
@@ -24,6 +26,11 @@ function Browse() {
   const [TV, setTV] = useState();
 
   console.log(featured);
+
+  const myref = useRef();
+  const entry = useIntersectionObserver(myref, {} )
+  const isVisible = !!entry?.isIntersecting
+  console.log(isVisible);
 
   useEffect(() => {
     async function fetchTrending() {
@@ -134,6 +141,9 @@ function Browse() {
       <div className="lg:hidden">
         <BrowseNav />
       </div>
+      <div className=" fixed z-30 w-full  top-0 left-0">
+        <BrowseNav isVisible={isVisible} /> 
+        </div>
       
 
       <div
@@ -146,10 +156,12 @@ function Browse() {
           backgroundPosition: "center",
         }}
       >
+         
+
         <div className="absolute w-full h-full bg-gradient-to-t from-black top-0 left-0">
 
-        <BrowseNav /> 
-        <div className="w-1/3 pl-10 mt-[200px] space-y-3">
+        
+        <div className="w-1/3 pl-[60px] mt-[200px] space-y-3">
         <h1 className="text-[40px] font-[800]  "> {featured?.original_name || featured?.name || featured?.title}</h1>
        <p>{featured?.overview}</p>
         <div className="flex space-x-3">
@@ -172,9 +184,9 @@ function Browse() {
       </div>
 
 
-      <main className="z-10 p-4 lg:pl-10  space-y-10 ">
+      <main ref={myref} className="z-10 p-4 lg:pl-10  space-y-10 ">
         <div>
-          <h1 className="text-[20px] font-[600] opacity-50 lg:opacity-100 pb-2 lg:pb-4">
+          <h1  className="text-[20px] font-[600] opacity-50 lg:opacity-100 pb-2 lg:pb-4">
             Trending
           </h1>
           <div className="flex md:space-x-1  overflow-x-scroll  scrollbar-hide ">

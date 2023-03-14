@@ -50,7 +50,7 @@ export default function Home() {
                 type="email"
                 className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
               ></input>
-              <button onClick={() => router.push("/signup")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
+              <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
                 {" "}
                 Get Started &#62;
               </button>
@@ -142,7 +142,7 @@ export default function Home() {
                 type="email"
                 className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
               ></input>
-              <button className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
+              <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
                 {" "}
                 Get Started &#62;
               </button>
