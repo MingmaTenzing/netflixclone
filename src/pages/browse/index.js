@@ -138,9 +138,7 @@ function Browse() {
 
       </Head>
 
-      <div className="lg:hidden">
-        <BrowseNav />
-      </div>
+      
       <div className=" fixed z-30 w-full  top-0 left-0">
         <BrowseNav isVisible={isVisible} /> 
         </div>

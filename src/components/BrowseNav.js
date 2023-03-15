@@ -26,7 +26,7 @@ useEffect(() => {
 
   return (
     <div className="  ">
-        <div className="md:hidden flex justify-between items-center p-4">
+        <div className="md:hidden flex justify-between items-center bg-black p-4">
             <div className="flex items-center space-x-3">
             <Bars3Icon className="w-8 text-white"/>
          <Link href="/" ><Image src={logo} alt="Netflix Logo" width={200} height={200}  className="w-20"/></Link>   
@@ -36,7 +36,7 @@ useEffect(() => {
             </div>
 
             {/*After Medium Device */}
-            <div className="hidden md:flex  lg:hidden md:items-center md:justify-between p-4">
+            <div className="hidden md:flex  lg:hidden md:items-center md:justify-between p-4 bg-black">
                 <div className="flex items-center space-x-10">
               <Link href="/"><Image src={logo} alt="Netflix Logo" width={200} height={200} className='w-[120px]' /></Link>  
                 <p className="text-NetflixRed  text-base">Browse</p> 

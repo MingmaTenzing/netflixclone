@@ -6,22 +6,33 @@ import { auth } from "@/firebase/init";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, signinuser } from "../../../slices/userSlice";
+import { useRouter } from "next/router";
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
-  console.log(email, password);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
 
   function loginUser(event) {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password).then ((userCredential) => {
-      setUser(userCredential.user);
-      console.log(user);
-      console.log('user logged in ')
-    }).catch((error) => {
-      console.log(error);
-    })
-
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const userdetails = userCredential.user;
+        dispatch(
+          signinuser({
+            uid: userdetails.uid,
+            email: userdetails.email,
+          })
+        );
+        router.push("/browse")
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
@@ -63,7 +74,7 @@ function Signin() {
                 </div>
               </div>
 
-              <button className="bg-NetflixRed h-[50px] rounded-lg mt-10 ">
+              <button onClick={loginUser} className="bg-NetflixRed h-[50px] rounded-lg mt-10 ">
                 Sign in
               </button>
             </form>

@@ -11,10 +11,15 @@ import { questions } from "../../questions";
 import FAQs from "@/components/FAQs";
 import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../slices/userSlice";
 
 export default function Home() {
 
   const router = useRouter();
+  const user = useSelector(selectUser)
+
+
 
 
   return (
@@ -41,11 +46,14 @@ export default function Home() {
             </p>
             <p className="sm:text-[20px]  lg:text-[26px]">
               {" "}
-              Ready to watch Netflix? Enter your email to create or restart your
-              membership
+             {user ? (<>Let's go</>):(<>Ready to watch Netflix? Enter your email to create or restart your
+              membership</>)} 
             </p>
             <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0">
-              <input
+             { user? (<>  <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
+                {" "}
+                Start Watching &#62;
+              </button> </>) : (<><input
                 placeholder="Email address"
                 type="email"
                 className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
@@ -53,7 +61,9 @@ export default function Home() {
               <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
                 {" "}
                 Get Started &#62;
-              </button>
+              </button></>) 
+
+             } 
             </div>
           </div>
         </main>
