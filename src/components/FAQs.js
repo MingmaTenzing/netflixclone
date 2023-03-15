@@ -3,7 +3,6 @@ import { useState } from "react"
 
 function FAQs({item}) {
     const [openDescription, setOpenDescription] = useState(false)
-  console.log(openDescription)
     return (
     <div className="container question   ">
           <div onClick={() => setOpenDescription(!openDescription)} className="h-[50px] flex items-center justify-between sm:h-[60px] bg-white bg-opacity-20  p-3">

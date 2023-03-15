@@ -8,10 +8,14 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, signinuser } from "../../../slices/userSlice";
 import { useRouter } from "next/router";
+import { useLocalStorage } from "usehooks-ts";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const emailaddress = useLocalStorage('useremail')
+  console.log(emailaddress)
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -68,18 +72,24 @@ function Signup() {
         <form onSubmit={createUser} className="space-y-2 mt-4">
           <input
             onChange={(event) => setEmail(event.target.value)}
+          defaultValue={emailaddress[0]}
+          required
+          autoComplete="true"
             type="email"
             placeholder="Email Address"
             className="border border-black w-full h-[60px] p-3 text-sm "
           ></input>
           <input
             minLength={8}
+            required
+            autoComplete="true"
+
             onChange={(event) => setPassword(event.target.value)}
             type="password"
             placeholder="Password"
             className="border border-black w-full h-[60px]  p-3 text-sm"
           ></input>
-          <button className="bg-NetflixRed text-white w-full h-[60px]">
+          <button onClick={createUser} className="bg-NetflixRed text-white w-full h-[60px]">
             Sign up{" "}
           </button>
         </form>

@@ -13,14 +13,13 @@ import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../slices/userSlice";
+import { useEffect } from "react";
+import { useLocalStorage } from "usehooks-ts";
 
 export default function Home() {
-
   const router = useRouter();
-  const user = useSelector(selectUser)
-
-
-
+  const user = useSelector(selectUser);
+  const [email, setEmail] = useLocalStorage("useremail", "");
 
   return (
     <>
@@ -46,24 +45,48 @@ export default function Home() {
             </p>
             <p className="sm:text-[20px]  lg:text-[26px]">
               {" "}
-             {user ? (<>Let's go</>):(<>Ready to watch Netflix? Enter your email to create or restart your
-              membership</>)} 
+              {user ? (
+                <>Let's go</>
+              ) : (
+                <>
+                  Ready to watch Netflix? Enter your email to create or restart
+                  your membership
+                </>
+              )}
             </p>
             <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0">
-             { user? (<>  <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
-                {" "}
-                Start Watching &#62;
-              </button> </>) : (<><input
-                placeholder="Email address"
-                type="email"
-                className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
-              ></input>
-              <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
-                {" "}
-                Get Started &#62;
-              </button></>) 
-
-             } 
+             
+              {user ? (
+                <>
+                  {" "}
+                  <button
+                    onClick={() => router.push("/browse")}
+                    className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto"
+                  >
+                    {" "}
+                    Start Watching &#62;
+                  </button>{" "}
+                </>
+              ) : (
+                <>
+                <form onSubmit={() => router.push('/signup')}>
+                  <input
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="Email address"
+                    type="email"
+                    required
+                    className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
+                  ></input>
+                  <button
+                    
+                    className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto"
+                  >
+                    {" "}
+                    Get Started &#62;
+                  </button>
+                  </form>
+                </>
+              )}
             </div>
           </div>
         </main>
@@ -139,29 +162,37 @@ export default function Home() {
           Frequently Asked Questions{" "}
         </h1>
         <div className="space-y-2 sm:w-3/4 lg:w-1/2 m-auto mt-8">
-       {questions.map((question) => <FAQs key={question.id} item={question}/>)}
+          {questions.map((question) => (
+            <FAQs key={question.id} item={question} />
+          ))}
+        </div>
       </div>
+
+      {/* READY TO WATCH NETFLIX? */}
+      <div className="bg-black text-white flex flex-col items-center space-y-4 py-12">
+        <h1 className="text-smalldescription text-center">
+          Ready to watch Netflix? Enter your email to create or restart your
+          membership.{" "}
+        </h1>
+        <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0">
+          <input
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Email address"
+            type="email"
+            className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
+          ></input>
+          <button
+            onClick={() => router.push("/signup")}
+            className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto"
+          >
+            {" "}
+            Get Started &#62;
+          </button>
+        </div>
       </div>
 
-{/* READY TO WATCH NETFLIX? */}
-<div className="bg-black text-white flex flex-col items-center space-y-4 py-12">
-  <h1 className="text-smalldescription text-center">Ready to watch Netflix? Enter your email to create or restart your membership. </h1>
-            <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0"> 
-              <input
-                placeholder="Email address"
-                type="email"
-                className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
-              ></input>
-              <button onClick={() => router.push("/browse")} className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto">
-                {" "}
-                Get Started &#62;
-              </button>
-              </div>
-</div>
-
-{/* FOOTER */}
-<Footer />
-
+      {/* FOOTER */}
+      <Footer />
     </>
   );
 }

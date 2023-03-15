@@ -7,9 +7,12 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import { useRef } from 'react'
-import { useIntersectionObserver } from "usehooks-ts";
+import { useIntersectionObserver, useLocalStorage } from "usehooks-ts";
 import { useEffect, useState } from "react";
 import Requests from "../../../utilities/Requests";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../slices/userSlice";
+import { useRouter } from "next/router";
 
 function Browse() {
   const [trending, setTrending] = useState();
@@ -25,12 +28,24 @@ function Browse() {
   const [animation, setAnimation] = useState();
   const [TV, setTV] = useState();
 
+  const [email, setEmail] = useLocalStorage('useremail', '')
+
   console.log(featured);
 
   const myref = useRef();
   const entry = useIntersectionObserver(myref, {} )
   const isVisible = !!entry?.isIntersecting
   console.log(isVisible);
+
+  const router = useRouter();
+  const user = useSelector(selectUser)
+
+  
+  useEffect(() => {
+    !user && router.push("/signin")
+
+  },[user])
+  
 
   useEffect(() => {
     async function fetchTrending() {
