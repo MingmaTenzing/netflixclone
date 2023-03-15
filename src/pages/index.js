@@ -46,7 +46,7 @@ export default function Home() {
             <p className="sm:text-[20px]  lg:text-[26px]">
               {" "}
               {user ? (
-                <>Let's go</>
+                <>Let&apos;s go</>
               ) : (
                 <>
                   Ready to watch Netflix? Enter your email to create or restart
