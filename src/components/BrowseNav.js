@@ -14,14 +14,15 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/firebase/init";
 import { useRouter } from "next/router";
 
-function BrowseNav({ isVisible, user }) {
+function BrowseNav({ isVisible }) {
   const [bg, setbg] = useState("transparent");
   const [openmodal, setopenModal] = useState(false);
   const dispatch = useDispatch();
   const [searchclick, setsearchclick] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   const router = useRouter();
-
+const user = useSelector(selectUser)
   useEffect(() => {
     !user && router.push("/signin");
   }, [user]);
@@ -33,6 +34,11 @@ function BrowseNav({ isVisible, user }) {
         router.push("/signin");
       })
       .catch((error) => console.log(error));
+  }
+
+  function searchquery(event) {
+    event.preventDefault();
+    router.push(`/search/${searchInput}`);
   }
 
   useEffect(() => {
@@ -58,11 +64,15 @@ function BrowseNav({ isVisible, user }) {
             />
           </Link>
         </div>
-        <input
-          type="text"
-          className="border bg-white bg-opacity-20 w-[130px] pl-2 p-1 text-sm mr-2 "
-          placeholder="Search"
-        />
+        <form onSubmit={searchquery}>
+          <input
+            onChange={(event) => setSearchInput(event.target.value)}
+            type="text"
+            className="border bg-white bg-opacity-20 w-[130px] pl-2 p-1 text-sm mr-2 "
+            placeholder="Search"
+          />
+          <button type="submit" className="hidden"></button>
+        </form>
       </div>
 
       {/*After Medium Device */}
@@ -81,11 +91,15 @@ function BrowseNav({ isVisible, user }) {
         </div>
 
         <div className="flex items-center space-x-3">
-          <input
-            type="text"
-            className="border bg-white bg-opacity-20 w-[160px] pl-2 p-1 text-sm mr-2 "
-            placeholder="Search"
-          />
+          <form onSubmit={searchquery}>
+            <input
+              onChange={(event) => setSearchInput(event.target.value)}
+              type="text"
+              className="border bg-white bg-opacity-20 w-[160px] pl-2 p-1 text-sm mr-2 "
+              placeholder="Search"
+            />
+            <button type="submit" className="hidden"></button>
+          </form>
 
           <div className="relative">
             <Image
@@ -140,17 +154,27 @@ function BrowseNav({ isVisible, user }) {
           </div>
           <div className="flex items-center space-x-3">
             {searchclick ? (
-              <div className="border flex items-center space-x-2 rounded-lg">
-                <input
-                  type="text"
-                  className="bg-transparent felx-1 outline-none p-2"
-                ></input>
-                <MagnifyingGlassIcon onClick={() => setsearchclick(!searchclick)} className="w-10 pr-2" />
+              <div className="border  rounded-lg">
+                <form onSubmit={searchquery} className='flex items-center space-x-2'>
+                  <input
+                    onChange={(event) => setSearchInput(event.target.value)}
+                    type="text"
+                    className="bg-transparent felx-1 outline-none p-2"
+                  ></input>
+                  <MagnifyingGlassIcon
+                    onClick={() => setsearchclick(!searchclick)}
+                    className="w-10 pr-2"
+                  />
+                  <button className="hidden"></button>
+                </form>
               </div>
             ) : (
               <>
                 {" "}
-                <MagnifyingGlassIcon onClick={() => setsearchclick(!searchclick)} className="w-10 pr-2 pt-1" />
+                <MagnifyingGlassIcon
+                  onClick={() => setsearchclick(!searchclick)}
+                  className="w-10 pr-2 pt-1"
+                />
               </>
             )}
 
