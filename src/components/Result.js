@@ -26,9 +26,10 @@ useEffect(() => {
   return (
     <div
       ref={hoverRef}
-      className=" relative  md:hover:scale-125 transition-all ease-linear duration-125"
+      className="m-1 relative  md:hover:scale-125 transition-all ease-linear duration-125"
     >
       <Image
+      loading="eager"
         width={800}
         height={300}
         src={image}
