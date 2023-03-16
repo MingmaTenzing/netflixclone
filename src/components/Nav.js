@@ -14,7 +14,6 @@ function Nav() {
   const [openModal, setOpenModal] = useState(false);
 
   const dispatch = useDispatch();
-  console.log(openModal);
 
   function logOutUser() {
     signOut(auth)

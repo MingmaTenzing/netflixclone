@@ -28,14 +28,11 @@ function Browse() {
   const [animation, setAnimation] = useState();
   const [TV, setTV] = useState();
 
-  const [email, setEmail] = useLocalStorage('useremail', '')
 
-  console.log(featured);
 
   const myref = useRef();
   const entry = useIntersectionObserver(myref, {} )
   const isVisible = !!entry?.isIntersecting
-  console.log(isVisible);
 
   const router = useRouter();
   const user = useSelector(selectUser)
@@ -48,6 +45,15 @@ function Browse() {
   
 
   useEffect(() => {
+async function searchtry(){
+  const {data} = await axios.get('https://api.themoviedb.org/3/search/movie?api_key=ce0b0bd695c8b328e08d65830c217807&language=en-US&query=fast and furious&page=1&include_adult=false')
+
+  console.log(data.results)}
+  searchtry();
+
+
+
+
     async function fetchTrending() {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3${Requests.fetchTrending.url}`
@@ -155,7 +161,7 @@ function Browse() {
 
       
       <div className=" fixed z-30 w-full  top-0 left-0">
-        <BrowseNav isVisible={isVisible} /> 
+        <BrowseNav isVisible={isVisible} user={user} /> 
         </div>
       
 

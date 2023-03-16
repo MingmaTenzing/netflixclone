@@ -21,6 +21,11 @@ export default function Home() {
   const user = useSelector(selectUser);
   const [email, setEmail] = useLocalStorage("useremail", "");
 
+function proceedSignup(event) {
+  event.preventDefault();
+  router.push('/signup')
+}
+
   return (
     <>
       <div className="  from-black bg-[url('/bgimage.png')] h-[70vh] sm:h-[100vh] w-full  bg-cover bg-center bg-no-repeat  ">
@@ -69,7 +74,7 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                <form onSubmit={() => router.push('/signup')}>
+                <form onSubmit={proceedSignup}>
                   <input
                     onChange={(event) => setEmail(event.target.value)}
                     placeholder="Email address"
@@ -77,7 +82,7 @@ export default function Home() {
                     required
                     className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
                   ></input>
-                  <button
+                  <button onClick={proceedSignup}
                     
                     className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto"
                   >
@@ -110,7 +115,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
+      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row-reverse md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
         <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:ml-5">
           <h1 className="text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">
             Watch Netflix everywhere
@@ -141,8 +146,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
-        <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col md:ml-5">
+      <div className="sm:flex sm:flex-col sm:items-center md:flex md:flex-row-reverse md:items-center  md:justify-center border-t-[10px]  border-white border-opacity-20  bg-black text-white text-center md:text-start md:space-x-2 px-5 sm:px-12 py-14 sm:pt-5">
+        <div className="space-y-4 sm:space-y-0 sm:max-w-[450px]  sm:flex sm:flex-col ">
           <h1 className="text-smallh1   sm:text-mediumh1 lg:text-largeh1 font-[700]">
             Download your shows to watch them offline
           </h1>
@@ -175,6 +180,7 @@ export default function Home() {
           membership.{" "}
         </h1>
         <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0">
+          <form onSubmit={proceedSignup}>
           <input
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Email address"
@@ -182,12 +188,13 @@ export default function Home() {
             className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
           ></input>
           <button
-            onClick={() => router.push("/signup")}
+            onClick={proceedSignup}
             className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto"
           >
             {" "}
             Get Started &#62;
           </button>
+          </form>
         </div>
       </div>
 

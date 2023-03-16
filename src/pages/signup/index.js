@@ -11,11 +11,13 @@ import { useRouter } from "next/router";
 import { useLocalStorage } from "usehooks-ts";
 
 function Signup() {
-  const [email, setEmail] = useState("");
+  const emailaddress = useLocalStorage('useremail')
+
+  const [email, setEmail] = useState(emailaddress[0]);
   const [password, setPassword] = useState("");
 
-  const emailaddress = useLocalStorage('useremail')
   console.log(emailaddress)
+  console.log(email)
 
   const dispatch = useDispatch();
   const router = useRouter();
