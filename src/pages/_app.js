@@ -18,15 +18,18 @@ let persistor = persistStore(store)
 
 export default function App({ Component, pageProps }) {
   return(
-    <Analytics >
   <Provider store={store} >
     <PersistGate  persistor={persistor}>
   <main className={openSans.className}>
+
+
 <Component {...pageProps}  />
+<Analytics />
+
   </main>
   </PersistGate>
   </Provider>
-  </Analytics>
+
 
   ) 
 }
