@@ -62,7 +62,7 @@ function Signup() {
         </Link>
       </div>
 
-      <div className="  w-2/3 md:w-1/3 m-auto mt-10">
+      <div className="  w-2/3 md:w-1/2  lg:w-1/3 m-auto mt-10">
         <div className="space-y-2">
           <h1 className="text-[24px] md:text-[34px] font-[700]">
             Create a password to start your membership{" "}
@@ -91,7 +91,7 @@ function Signup() {
             placeholder="Password"
             className="border border-black w-full h-[60px]  p-3 text-sm"
           ></input>
-          <button onClick={createUser} className="bg-NetflixRed text-white w-full h-[60px]">
+          <button type="submit" className="bg-NetflixRed text-white w-full h-[60px]">
             Sign up{" "}
           </button>
         </form>

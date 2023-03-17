@@ -45,11 +45,6 @@ function Browse() {
   
 
   useEffect(() => {
-async function searchtry(){
-  const {data} = await axios.get('https://api.themoviedb.org/3/search/movie?api_key=ce0b0bd695c8b328e08d65830c217807&language=en-US&query=fast and furious&page=1&include_adult=false')
-
-  console.log(data.results)}
-  searchtry();
 
 
 
@@ -208,7 +203,7 @@ async function searchtry(){
           <h1  className="text-[20px] font-[600] opacity-50 lg:opacity-100 pb-2 lg:pb-4">
             Trending
           </h1>
-          <div className="flex md:space-x-1  overflow-x-scroll  scrollbar-hide ">
+          <div className="flex md:space-x-1  overflow-x-scroll   scrollbar-hide ">
             {trending?.map((movie) => (
               <Template key={movie.id} movie={movie} />
             ))}
@@ -218,7 +213,7 @@ async function searchtry(){
           <h1 className="text-[20px] font-[600] opacity-50 lg:opacity-100 pb-2 lg:pb-4">
             Top-Rated
           </h1>
-          <div id="makeitinvisible" className="flex md:space-x-1  overflow-x-scroll  ">
+          <div id="makeitinvisible" className="flex md:space-x-1 scrollbar-hide  overflow-x-scroll  ">
             {topRated?.map((movie) => (
               <Template key={movie.id} movie={movie} />
             ))}

@@ -74,7 +74,7 @@ function proceedSignup(event) {
                 </>
               ) : (
                 <>
-                <form onSubmit={proceedSignup}>
+                <form onSubmit={proceedSignup} className='space-y-2 sm:space-y-0'>
                   <input
                     onChange={(event) => setEmail(event.target.value)}
                     placeholder="Email address"
@@ -82,7 +82,7 @@ function proceedSignup(event) {
                     required
                     className=" outline-none h-10 sm:h-12 w-[300px] text-black p-2"
                   ></input>
-                  <button onClick={proceedSignup}
+                  <button type="submit"
                     
                     className="bg-NetflixRed h-10 sm:h-12 px-3 w-[150px] m-auto"
                   >
@@ -179,8 +179,7 @@ function proceedSignup(event) {
           Ready to watch Netflix? Enter your email to create or restart your
           membership.{" "}
         </h1>
-        <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0">
-          <form onSubmit={proceedSignup}>
+          <form onSubmit={proceedSignup} className='flex flex-col space-y-2 sm:flex-row sm:items-center sm:space-y-0'>
           <input
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Email address"
@@ -195,7 +194,7 @@ function proceedSignup(event) {
             Get Started &#62;
           </button>
           </form>
-        </div>
+    
       </div>
 
       {/* FOOTER */}

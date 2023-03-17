@@ -12,6 +12,9 @@ import { useRouter } from "next/router";
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [wrongPassword, setWrongPassword] = useState();
+    const [toomanyAttempts , settoomanyAttempts] = useState()
+  const [usernotfound, setUserNotFound] = useState()
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -19,6 +22,10 @@ function Signin() {
 
   function loginUser(event) {
     event.preventDefault();
+    setUserNotFound(false);
+    setWrongPassword(false)
+    settoomanyAttempts(false);
+   
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const userdetails = userCredential.user;
@@ -31,10 +38,22 @@ function Signin() {
         router.push("/browse")
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.code)
+        if (error.code === 'auth/wrong-password'){
+          setWrongPassword(true)
+         
+        }
+        else if (error.code === 'auth/too-many-requests'){
+
+          settoomanyAttempts(true)
+        }
+        else if (error.code === 'auth/user-not-found'){
+          setUserNotFound(true)
+
+        }
       });
   }
-
+console.log(wrongPassword)
   return (
     <>
       {/*SMALL DEVICE */}
@@ -47,7 +66,19 @@ function Signin() {
           </Link>
 
           <div className="pt-10">
-            <h1 className="text-[26px] font-bold pb-5">Sign in</h1>
+            <div className="flex justify-between items-center">
+            <h1 className="text-[26px] font-bold pb-5">Sign in </h1>
+            {
+              wrongPassword && <h1 className="text-NetflixRed  font-light">Incorrect Password</h1>
+            }
+            {
+              toomanyAttempts && <h1 className="text-NetflixRed font-light">Too many attempts. Try again later.</h1>
+            }{
+              usernotfound && <h1 className="text-NetflixRed font-light">Incorrect Email Address</h1>
+            }
+
+
+            </div>
             <form onSubmit={loginUser} className="flex flex-col  ">
               <div className="space-y-4">
                 <div className="relative">
@@ -74,7 +105,7 @@ function Signin() {
                 </div>
               </div>
 
-              <button onClick={loginUser} className="bg-NetflixRed h-[50px] rounded-lg mt-10 ">
+              <button type='submit' className="bg-NetflixRed h-[50px] rounded-lg mt-10 ">
                 Sign in
               </button>
             </form>
@@ -108,7 +139,23 @@ function Signin() {
 
           <div className=" bg-black sm:w-2/3 md:w-2/3 lg:w-1/3  m-auto mt-10  p-5 md:p-10 ">
             <form onSubmit={loginUser} className="space-y-4">
+              <div className="flex justify-between items-center">
               <h1 className="font-bold text-[24px]"> Sign in </h1>
+              {
+                toomanyAttempts &&               <h1 className="text-NetflixRed font-light">Too many attempts. Please try again later</h1>
+
+              }
+              {
+                wrongPassword &&               <h1 className="text-NetflixRed font-light">Incorrect Password</h1>
+
+              }
+              {
+                usernotfound &&               <h1 className="text-NetflixRed font-light">Incorrect Email Address</h1>
+
+              }
+
+
+              </div>
 
               <div className="relative">
                 <input

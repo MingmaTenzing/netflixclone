@@ -28,13 +28,15 @@ useEffect(() => {
       ref={hoverRef}
       className=" relative  hover:scale-125 transition-all ease-linear duration-125"
     >
+      <div className="min-w-[250px]">
       <Image
         width={250}
         height={150}
         src={image}
         alt="poster"
-        className={`min-w-[250px] max-h-[150px]  ${brightness}` }  
+        className={` object-cover  ${brightness}` }  
       />
+      </div>
       {isHover && (
         <p className=" absolute text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold">
           {movie?.title || movie?.original_name || movie?.name}
