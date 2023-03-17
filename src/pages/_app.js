@@ -4,6 +4,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import store from '../../store'
 import { Provider } from 'react-redux'
 import {persistStore} from "redux-persist"
+import { Analytics } from '@vercel/analytics/react';
+
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -16,6 +18,7 @@ let persistor = persistStore(store)
 
 export default function App({ Component, pageProps }) {
   return(
+    <Analytics >
   <Provider store={store} >
     <PersistGate  persistor={persistor}>
   <main className={openSans.className}>
@@ -23,6 +26,7 @@ export default function App({ Component, pageProps }) {
   </main>
   </PersistGate>
   </Provider>
+  </Analytics>
 
   ) 
 }
